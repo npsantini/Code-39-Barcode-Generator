@@ -11,7 +11,7 @@ body{
 .upcNum {
   display: block;
   margin: auto;
-  width: 325px;
+  width: 400px;
   max-width:100%;
   font-size:24px;
   font-weight:bold;
@@ -24,7 +24,7 @@ input[type="submit"] {
   display: block;
   margin: auto;
   margin-top:10px;
-  width: 325px;
+  width: 400px;
   max-width:100%;
   font-size:24px;
   font-weight:bold;
@@ -92,7 +92,6 @@ input[type="submit"] {
 html {
   font-family: "Roboto", Arial, sans-serif;
   text-align: center;
-  /*background: url("https://unsplash.it/1920/1080/?random");*/
 }
 
 body {
@@ -101,7 +100,8 @@ body {
 }
 
 p {
-  width: 50%;
+  width: 400px;
+  text-align: left;
   margin: 10px auto;
 }
 
@@ -112,6 +112,10 @@ h1 {
   font-size: 45px;
 }
 
+input.printBtn {
+	display:none;
+}
+
 @media (max-width: 768px) {
   body {
     width: 100%;
@@ -119,4 +123,30 @@ h1 {
   p {
     width: 75%;
   }
+}
+
+@media print { 
+	* {
+		visibility: hidden;
+	}
+	
+	#barcode {
+		visibility: visible;
+		position:absolute;
+		top: 0px;
+		left: 0px;
+		border: 2px solid #000;
+	}
+	
+	div#barcode > * {
+		visibility: visible;
+	}
+	
+	div.sect {
+		visibility: visible;
+	}
+	
+	.container2 {
+		line-height: 50px;
+	}
 }
