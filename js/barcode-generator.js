@@ -55,26 +55,34 @@ $("#Btn").click(function() {
       "backgroundImage",
       "url('img/star.jpg')"
     );
+	
+	// Make the CSS changes
     $(".flex").css("backgroundColor", "#fff");
 	$("#barcode").css("display", "block");
 	$(".container1").css("display", "block");
     $(".container2").css("display", "block");
+	$(".printBtn").css("display", "block");
+	
     var form = $(".upcNum").not(".container");
-    var vals = form
-      .map(function() {
+    var vals = form.map(function() {
         var value = $.trim(this.value);
         return value ? value : undefined;
-      })
-      .get();
+      }).get();
 
     var label = vals.join("");
     $(".container2").html(label.toUpperCase());
-    $(".container2").lettering();
   }
 });
 
 //Fix the barcode scanner from opening up the downloads window
 document.addEventListener('keydown', function(event) {
-    if( event.keyCode == 13 || event.keyCode == 17 || event.keyCode == 74 )
-      event.preventDefault();
-  });
+    if( event.keyCode == 13 || event.keyCode == 17 || event.keyCode == 74 ) {
+		event.preventDefault();
+	}
+});
+
+//Print the barcode
+$('input.printBtn').click(function(){
+    window.print();
+    return false;
+});
